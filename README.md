@@ -1,10 +1,10 @@
 # PCC CTF 2025 - Writeups Collection
 
 ![Profile Banner](https://img.shields.io/badge/Platform-AirOverflow%20Arena-purple?style=for-the-badge)
-![Challenges Solved](https://img.shields.io/badge/Solved-9%2F9-green?style=for-the-badge)
+![Challenges Solved](https://img.shields.io/badge/Challenges-9%20Solved-green?style=for-the-badge)
 ![Points](https://img.shields.io/badge/Points-4150-blue?style=for-the-badge)
 
-Complete writeups for all challenges solved during PCC CTF 2025 on the AirOverflow Arena platform.
+Writeups for challenges solved during PCC CTF 2025 on the AirOverflow Arena platform.
 
 ## 🏆 Profile Overview
 
@@ -12,7 +12,7 @@ Complete writeups for all challenges solved during PCC CTF 2025 on the AirOverfl
 - **Level:** 11
 - **Rank:** 18
 - **Total Points:** 4150
-- **Challenges Solved:** 9/32
+- **Challenges Solved:** 9
 - **Member Since:** October 18, 2025
 
 ## 📚 Challenge Writeups
@@ -202,4 +202,4 @@ This repository is for educational purposes. Feel free to use these writeups for
 
 **Last Updated:** October 24, 2025
 
-**Status:** challenges solved (9/32) 
+**Status:** 9 challenges solved ✅ 
